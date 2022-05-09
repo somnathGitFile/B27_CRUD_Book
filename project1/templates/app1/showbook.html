@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>SHOW BOOKS</title>
+{% endblock %}
+
+
+{% block content %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">BOOK ID</th>
+      <th scope="col">BOOK NAME</th>
+      <th scope="col">AUTHOR NAME</th>
+      <th scope="col">PRICE</th>
+        <th scope="col">Qty</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in obj %}
+    <tr>
+        <td>{{i.bid}}</td>
+        <td>{{i.bname}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.Qty}}</td>
+        <td><button class="btn btn-warning"><a href="{% url 'updatebook_url' i.bid %}">UPDATE</a></button></td>
+        <td><button class="btn btn-danger"><a href="{% url 'deletebook_url' i.bid %}">DELETE</a></button></td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}
